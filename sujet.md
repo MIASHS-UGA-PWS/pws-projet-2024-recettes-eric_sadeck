@@ -463,8 +463,9 @@ Créer une Factory pour recipe
 <https://laravel.com/docs/master/database-testing#defining-model-factories>
 
 ``` bash
-/php artisan migrate:factory Recipe/
+/php artisan make:factory Recipe/ 
 ```
+
 
 La librairie faker vous permet de créer de la donnée. Voir la
 documentation ici: <https://fakerphp.github.io/formatters/>
