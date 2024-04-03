@@ -12,7 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->id();
+            $table->id();  $table->unsignedBigInteger('owner_id')->default(0)->index('recipes_fk1_idx');
+            $table->mediumText('title');
+            $table->longText('content');
+            $table->longText('ingredients');
+            $table->string('price', 45)->default('Mid-range');
+            $table->string('url', 200)->unique('url_UNIQUE');
+            $table->text('tags')->nullable();
+            $table->string('status', 45)->default('published');
             $table->timestamps();
         });
     }

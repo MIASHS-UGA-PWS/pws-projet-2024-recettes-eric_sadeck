@@ -11,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+            Schema::create('comments', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('recipe_id');
+                $table->string('name');
+                $table->text('message');
+                $table->timestamps();
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('comments');
-    }
-};
+                $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
+            });
+        }
+
+        public function down()
+        {
+            Schema::dropIfExists('comments');
+        }
+    };
