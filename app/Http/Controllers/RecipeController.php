@@ -23,7 +23,6 @@ class RecipeController extends Controller
         $recipes = User::find(1)->recipes; // get recipes from user id 1
         foreach ($recipes as $recipe) {
             // loop on recipes
-            echo $recipe->title; // for example
         }
     }
 
