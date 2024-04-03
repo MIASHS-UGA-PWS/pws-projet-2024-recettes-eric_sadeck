@@ -5,3 +5,4 @@
 @section('content')
     <!-- Votre contenu ici -->
 @endsection
+

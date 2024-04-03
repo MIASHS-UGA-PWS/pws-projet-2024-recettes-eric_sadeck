@@ -183,7 +183,7 @@ layout, il faudra:
   @endsection
   ```
 
-  La section `content` sera affichée dans le le fichier layout à
+  La section `content` sera affichée dans le fichier layout à
   l'endroit où est placé le code: `@yield('content')`
 
 **Exercice:**
@@ -214,8 +214,7 @@ layout, il faudra:
 
 ## Base de données
 
-Nous allons utiliser une base de données pour stocker les recettes,
-utilisateurs, commentaires et demandes de contact.
+Nous allons utiliser une base de données pour stocker les recettes, utilisateurs, commentaires et demandes de contact.
 
   
 Les tables seront créées à l'aide des migrations de Laravel:

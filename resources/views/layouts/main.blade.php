@@ -31,7 +31,7 @@
                  <a class="navbar-item" href="#">Home</a>
                  <a class="navbar-item" href="#">Recettes</a>
                  <a class="navbar-item" href="#">Contact</a>
-                 <!-- <a href="/phpliteadmin.php">DBADMIN</a> -->
+                 <a class="navbar-item" href="/phpliteadmin.php">DBADMIN</a>
              </div>
             <div class="navbar-item">
               <div class="field has-addons">
