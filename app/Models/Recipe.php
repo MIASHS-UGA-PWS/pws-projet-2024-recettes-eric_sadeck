@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class recipe extends Model
 {
     use HasFactory;
+
+/**
+ * Get the user that owns the recipe.
+ */
+public function user()
+{
+    return $this->belongsTo(User::class,'owner_id');
+}
 }
