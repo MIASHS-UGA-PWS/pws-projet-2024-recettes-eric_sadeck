@@ -35,13 +35,26 @@ class RecipeController extends Controller
         return view('welcome',array('recipes' => $recipes));
     }
 
-    public function show($id)
+     public function show_id($id)
     {
         $recipe = \App\Models\Recipe::find($id);
         $recipes = \App\Models\Recipe::latest()->take(3)->get();
         return view('recipe', ['recipe' => $recipe, 'recipes' => $recipes]);
     }
 
-}
+
+    public function show($recipe_url) {
+        $recipe = \App\Models\Recipe::where('url',$recipe_url)->first(); //get first recipe with recipe_nam == $recipe_name
+        $recipes = \App\Models\Recipe::latest()->take(3)->get();
+        return view('recipes/single',array( //Pass the recipe to the view
+            'recipe' => $recipe,
+            'recipes' => $recipes,
+
+        ));
+
+
+        }
+    }
+
 ?>
 
