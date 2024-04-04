@@ -17,13 +17,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-use App\Http\Controllers\HomeController;
-Route::get('/', [HomeController::class, 'index']);
+// use App\Http\Controllers\HomeController;
+// Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [App\Http\Controllers\RecipeController::class, 'welcome']);
 
 use App\Http\Controllers\ContactController;
 Route::get('/contact', [ContactController::class, 'index']);
 
 use App\Http\Controllers\RecipeController;
 Route::get('/recettes', [RecipeController::class, 'index']);
+Route::get('/recettes/{recipe}', [App\Http\Controllers\RecipeController::class, 'show'])->name('recettes.show');
+Route::get('/recettes/{url}',[RecipeController::class, 'show']);
+
+Route::get('/contact', 'ContactController@create');
+Route::post('/contact', 'ContactController@store');
 
 ?>

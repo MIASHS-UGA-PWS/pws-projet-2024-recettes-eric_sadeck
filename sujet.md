@@ -469,8 +469,7 @@ Créer une Factory pour recipe
 La librairie faker vous permet de créer de la donnée. Voir la
 documentation ici: <https://fakerphp.github.io/formatters/>
 
-Vous devrez compléter la fonction definition() avec les colonnes de la
-table recipes à remplir. Voici un début de définition possible:
+Vous devrez compléter la fonction definition() avec les colonnes de la table recipes à remplir. Voici un début de définition possible:
 
 ``` php
 public function definition(): array
