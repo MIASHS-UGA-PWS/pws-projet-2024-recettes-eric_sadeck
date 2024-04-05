@@ -1,6 +1,8 @@
 
 @extends('layouts.main')
 @section('content')
+<h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold has-text-left">Les 3 dernières recettes : </h2>
+
 <div class="columns is-multiline">
     @foreach ($recipes as $recipe)
         <div class="column is-4 mb-5">

@@ -13,7 +13,7 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'message' => 'required',
@@ -24,9 +24,12 @@ class ContactController extends Controller
         $contact->email = $request->email;
         $contact->message = $request->message;
         $contact->save();
+        return redirect('/contact')->with('success', 'Votre message a été envoyé avec succès.');
 
-        return redirect('/contact')->with('success', 'Message envoyé avec succès');
+
+    //     return redirect('/contact')->with('success', 'Message envoyé avec succès');
+        // }
     }
 }
-?>
+    ?>
 

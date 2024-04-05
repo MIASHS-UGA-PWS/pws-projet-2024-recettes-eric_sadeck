@@ -15,7 +15,7 @@
       <nav class="navbar py-4">
         <div class="container">
           <div class="navbar-brand">
-            <a class="navbar-item" href="#">
+            <a class="navbar-item" href="{{ url('/') }}">
               <span class="icon">
                 <i class="fas fa-utensils" style="font-size:26px; width:26px"></i>
               </span>
@@ -28,9 +28,9 @@
           </div>
           <div class="navbar-menu">
             <div class="navbar-start">
-                 <a class="navbar-item" href="#">Home</a>
-                 <a class="navbar-item" href="#">Recettes</a>
-                 <a class="navbar-item" href="#">Contact</a>
+            <a class="navbar-item" href="{{ url('/') }}">Home</a>
+            <a class="navbar-item" href="{{ url('/recettes') }}">Recettes</a>
+            <a class="navbar-item" href="{{ url('/contact') }}">Contact</a>
                  {{-- <a class="navbar-item" href="/phpliteadmin.php">DBADMIN</a> --}}
              </div>
             <div class="navbar-item">
@@ -60,7 +60,6 @@
               <p class="subtitle has-text-grey">Le meilleur de la cuisine</p>
             </div>
           </div>
-        <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold has-text-left">Les 3 dernières recettes : </h2>
 
 
           @yield('content')

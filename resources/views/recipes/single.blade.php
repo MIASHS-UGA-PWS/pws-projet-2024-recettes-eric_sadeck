@@ -6,7 +6,6 @@
     <p>{{ $recipe->description }}</p>
 @endsection --}}
 
-
 @section('content')
     <h1 class="has-text-weight-bold">{{ $recipe->title }}</h1>
     <p>par {{ $recipe->user->name }}</p> <br>
