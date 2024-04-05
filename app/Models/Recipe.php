@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class recipe extends Model
 {
+    protected $fillable = ['title', 'content', 'price', 'ingredients'];
+
     use HasFactory;
 
 /**

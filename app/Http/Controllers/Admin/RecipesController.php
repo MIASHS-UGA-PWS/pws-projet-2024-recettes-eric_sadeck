@@ -16,7 +16,7 @@ class RecipesController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-        return view('recipes.index', compact('recipes'));
+        return view('admin.recipes.index', compact('recipes'));
     }
 
     /**
@@ -24,7 +24,7 @@ class RecipesController extends Controller
      */
     public function create()
     {
-        return view('recipes.create');
+        return view('admin.recipes.create');
     }
 
     /**
@@ -32,8 +32,29 @@ class RecipesController extends Controller
      */
     public function store(Request $request)
     {
-        $recipe = Recipe::create($request->all());
+    $request->validate([
+        'title' => 'required',
+        'content' => 'required',
+        'ingredients' => 'required',
+        'price' => 'required',
+    ]);
+
+    $recipe = new Recipe;
+    // $recipe->owner_id = auth()->id();
+    $recipe->owner_id = 2;
+    $recipe->title = $request->title;
+    $recipe->content = $request->content;
+    $recipe->ingredients = $request->ingredients;
+    $recipe->price = $request->price;
+    $recipe->url = str_replace(' ', '-', $request->title);
+    $recipe->tags = 'default-tag'; // replace with actual tags if needed
+    $recipe->status = 'published';
+
+    $recipe->save();
+
+    // return redirect()->route('recipes.index');
         return redirect()->route('recipes.show', $recipe);
+
     }
 
     /**
@@ -41,7 +62,7 @@ class RecipesController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        return view('recipes.show', compact('recipe'));
+        return view('admin.recipes.show', compact('recipe'));
     }
 
     /**
@@ -49,7 +70,7 @@ class RecipesController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        return view('recipes.edit', compact('recipe'));
+        return view('admin.recipes.edit', compact('recipe'));
     }
 
     /**
