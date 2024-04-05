@@ -32,6 +32,8 @@ use App\Http\Controllers\RecipeController;
 Route::get('/recettes/{url}',[RecipeController::class, 'show']);
 Route::get('/recettes', [App\Http\Controllers\RecipeController::class, 'welcome']);
 
+use App\Http\Controllers\Admin\RecipesController;
+Route::resource('admin/recipes', RecipesController::class);
 
 
 
