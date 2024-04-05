@@ -55,7 +55,6 @@ class RecipesController extends Controller
 
     // return redirect()->route('recipes.index');
         return redirect()->route('recipes.show', $recipe);
-
     }
 
     /**
