@@ -30,7 +30,8 @@ class RecipeController extends Controller
 
     public function welcome()
     {
-        $recipes = \App\Models\Recipe::all(); //get all recipes
+        // $recipes = \App\Models\Recipe::all(); //get all recipes
+        $recipes = \App\Models\Recipe::latest()->get(); // get all recipes in descending order
         // $recipes = \App\Models\Recipe::latest()->take(3)->get();
         return view('recipe',array('recipes' => $recipes));
     }

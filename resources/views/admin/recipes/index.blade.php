@@ -5,7 +5,8 @@
 
     @foreach ($recipes as $recipe)
         <div>
-            <h2>{{ $recipe->title }}</h2>
+            {{-- <h2>{{ $recipe->title }}</h2> --}}
+            <h2><a href="/admin/recipes/{{ $recipe->url }}">{{ $recipe->title }}</a></h2>
             <p>{{ $recipe->user->name }}</p>
 
             <form action="{{ route('recipes.destroy', $recipe) }}" method="POST">

@@ -15,7 +15,8 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::all();
+        // $recipes = Recipe::all();
+        $recipes = \App\Models\Recipe::latest()->get(); // get all recipes in descending order
         return view('admin.recipes.index', compact('recipes'));
     }
 
