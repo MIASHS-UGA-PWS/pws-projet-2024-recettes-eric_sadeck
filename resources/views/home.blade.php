@@ -17,8 +17,14 @@
                     {{ __('You are logged in!') }}
 
                     @foreach ($recipes as $recipe)
-                        <p>{{ $recipe->name }}</p>
-                    @endforeach
+    <div>
+        <h2>{{ $recipe->title }}</h2>
+        <p>{{ $recipe->content }}</p>
+        @if($recipe->url)
+            <a href="{{ route('ratings.store', ['recipe' => $recipe->url]) }}">Read More</a>
+        @endif
+    </div>
+@endforeach
                 </div>
             </div>
         </div>
