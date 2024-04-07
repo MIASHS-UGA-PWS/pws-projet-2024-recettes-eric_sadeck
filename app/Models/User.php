@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\Rating;
+use App\Models\User; 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -42,11 +43,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-   /**
- * Get the user recipes'
- */
-public function recipes()
+
+    /**
+     * Get the user recipes'
+     */
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class,'owner_id');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+    public function store(Request $request, $recipe)
 {
-    return $this->hasMany(Recipe::class,'owner_id');
+    $anonymousUser = $this->firstOrCreate(['email' => 'anonymous@user.com']);
+    
+    $rating = new Rating;
+    $rating->recipe_id = $recipe;
+    $rating->stars = $request->score;
+    $rating->user_id = $anonymousUser->id;
+    $rating->save();
+
+    return back();
 }
 }

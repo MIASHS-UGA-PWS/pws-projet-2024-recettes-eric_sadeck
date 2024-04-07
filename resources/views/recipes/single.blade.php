@@ -12,3 +12,17 @@
     <p><strong>Ingredients:</strong> {{ $recipe->ingredients }}</p>
     <p><strong>Content:</strong> {{ $recipe->content }}</p>
 @endsection
+
+<!-- <form action="{{ route('ratings.store') }}" method="POST">
+    @csrf
+    <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
+    <select name="stars">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <button type="submit">Rate</button>
+    <p>Average rating: {{ $recipe->averageRating() }}</p>
+</form> -->

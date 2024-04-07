@@ -10,9 +10,11 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        $recipes = \App\Models\Recipe::all();
-
-        return view('recipe');
+        $recipes = Recipe::with('ratings')->get()->sortByDesc(function ($recipe) {
+            return $recipe->averageRating();
+        });
+    
+        return view('recipe', compact('recipes'));
     }
     public function showRecipeOwner()
     {
@@ -49,6 +51,7 @@ class RecipeController extends Controller
         $recipe = \App\Models\Recipe::where('url',$recipe_url)->first(); //get first recipe with recipe_nam == $recipe_name
         // $recipes = \App\Models\Recipe::latest()->take(3)->get();
         $recipes = \App\Models\Recipe::all(); //get all recipes
+
         return view('recipes/single',array( //Pass the recipe to the view
             'recipe' => $recipe,
             'recipes' => $recipes,

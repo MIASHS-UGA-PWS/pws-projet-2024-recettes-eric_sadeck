@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class recipe extends Model
+class Recipe extends Model
 {
     protected $fillable = ['title', 'content', 'price', 'ingredients'];
 
@@ -22,5 +22,13 @@ public function user()
 public function getRouteKeyName()
 {
     return 'url';
+}
+public function ratings()
+{
+    return $this->hasMany('App\Models\Rating');
+}
+public function averageRating()
+{
+    return $this->ratings()->avg('stars');
 }
 }
