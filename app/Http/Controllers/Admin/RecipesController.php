@@ -5,14 +5,30 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class RecipesController extends Controller
 
 {
+    protected $user;
+    protected $userId;
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+
+         $this->middleware(function ($request, $next) {
+             $this->user = Auth::user();
+             $this->userId = Auth::id();
+
+             return $next($request);
+         });
+     }
+
     public function index()
     {
         // $recipes = Recipe::all();
@@ -42,7 +58,7 @@ class RecipesController extends Controller
 
     $recipe = new Recipe;
     // $recipe->owner_id = auth()->id();
-    $recipe->owner_id = 2;
+    $recipe->owner_id = $this->userId;
     $recipe->title = $request->title;
     $recipe->content = $request->content;
     $recipe->ingredients = $request->ingredients;

@@ -49,4 +49,30 @@ public function recipes()
 {
     return $this->hasMany(Recipe::class,'owner_id');
 }
+
+// Get the user roles
+public function roles()
+{
+    return $this->belongsToMany(Role::class);
+}
+
+// Get the user role names
+public function getRoleNamesAttribute()
+{
+    return $this->roles->pluck('name')->join(', ');
+}
+/*
+// Check if user has a role
+public function hasRole($roleName)
+{
+    return $this->roles->contains('name', $roleName);
+}
+
+// Check if user is admin
+public function isAdmin()
+{
+    return $this->role == 'admin';
+} */
+
+
 }
