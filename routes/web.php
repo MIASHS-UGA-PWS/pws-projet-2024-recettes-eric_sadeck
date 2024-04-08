@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\Admin\RecipesController;
+use App\Http\Controllers\RatingsController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,21 +27,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 // Route::get('/', [HomeController::class, 'index']);
 Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
-
-use App\Http\Controllers\ContactController;
-//Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'create']);
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-
-use App\Http\Controllers\RecipeController;
-// Route::get('/recettes', [RecipeController::class, 'index']);
-// Route::get('/recettes/{recipe}', [App\Http\Controllers\RecipeController::class, 'show'])->name('recettes.show');
 Route::get('/recettes/{url}',[RecipeController::class, 'show']);
 Route::get('/recettes', [App\Http\Controllers\RecipeController::class, 'welcome']);
-
-use App\Http\Controllers\Admin\RecipesController;
 Route::resource('admin/recipes', RecipesController::class);
+Route::post('/recipe/{recipe}/rate', [RatingsController::class, 'store'])->name('recipe.rate');
+Route::post('/ratings/{recipe}', [RatingsController::class, 'store'])->name('ratings.store');
 
+//Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/recipes/{recipe}/comments', [CommentsController::class, 'store'])->name('comments.store');
 
 use App\Http\Controllers\DashboardController;
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

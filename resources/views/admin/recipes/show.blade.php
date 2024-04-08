@@ -11,9 +11,12 @@
 
     <a href="{{ route('recipes.edit', $recipe) }}">Modifier</a>
 
+    
+
     <form action="{{ route('recipes.destroy', $recipe) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit">Supprimer</button>
     </form>
+    
 @endsection
