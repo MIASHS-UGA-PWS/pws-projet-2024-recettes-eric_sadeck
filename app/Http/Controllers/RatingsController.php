@@ -10,21 +10,23 @@ use Illuminate\Support\Facades\Hash;
 
 class RatingsController extends Controller
 {
-    
+    public function store(Request $request, $recipe)
+    {
+        $request->validate([
+            'score' => 'required|integer|between:1,5',
+        ]);
 
-public function store(Request $request, $recipe)
-{
-    $anonymousUser = User::firstOrCreate(
-        ['email' => 'anonymous@user.com'],
-        ['name' => 'Anonymous', 'password' => Hash::make('password')]
-    );
-    
-    $rating = new Rating;
-    $rating->recipe_id = $recipe;
-    $rating->stars = $request->score;
-    $rating->user_id = $anonymousUser->id;
-    $rating->save();
+        $anonymousUser = User::firstOrCreate(
+            ['email' => 'anonymous@user.com'],
+            ['name' => 'Anonymous', 'password' => Hash::make('password')]
+        );
+        
+        $rating = new Rating;
+        $rating->recipe_id = $recipe;
+        $rating->stars = $request->score;
+        $rating->user_id = $anonymousUser->id;
+        $rating->save();
 
-    return back();
-}
+        return back();
+    }
 }

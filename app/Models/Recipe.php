@@ -31,4 +31,8 @@ public function averageRating()
 {
     return $this->ratings()->avg('stars');
 }
+public function comments()
+{
+    return $this->hasMany(Comment::class);
+}
 }

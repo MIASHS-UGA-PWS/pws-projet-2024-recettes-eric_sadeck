@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['recipe_id', 'content'];
+
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class);
+    }
 }

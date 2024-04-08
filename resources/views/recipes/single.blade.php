@@ -6,7 +6,7 @@
     <p><strong>Ingredients:</strong> {{ $recipe->ingredients }}</p>
     <p><strong>Content:</strong> {{ $recipe->content }}</p>
 
-    <form action="{{ route('ratings.store', ['recipe' => $recipe->id]) }}" method="POST">
+    <!-- <form action="{{ route('ratings.store', ['recipe' => $recipe->id]) }}" method="POST">
         @csrf
         <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
         <select name="stars">
@@ -18,5 +18,17 @@
         </select>
         <button type="submit">Noter</button>
         <p>Average rating: {{ $recipe->averageRating() }}</p>
-    </form>
+    </form> -->
+    <h2>Commentaire</h2>       
+        <!-- Formulaire de commentaires -->
+        <form action="{{ route('comments.store', ['recipe' => $recipe->id]) }}" method="POST">
+    @csrf
+    <textarea name="content"></textarea>
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Liste des commentaires -->
+@foreach($recipe->comments as $comment)
+    <p>{{ $comment->content }}</p>
+@endforeach
 @endsection
