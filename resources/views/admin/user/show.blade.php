@@ -3,9 +3,9 @@
 @section('content')
     <h1>User Details</h1>
 
-    <p>Name: {{ $user->name }}</p>
-    <p>Email: {{ $user->email }}</p>
-    <p>Role: {{ $user->roles->pluck('name')->join(', ') }}</p>
+    <p><strong>Name : </strong> {{ $user->name }}</p>
+    <p><strong>Email : </strong> {{ $user->email }}</p>
+    <p><strong>Role : </strong> {{ $user->roles->pluck('name')->join(', ') }}</p> <br>
 
     <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary">Edit</a>
 

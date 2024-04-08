@@ -12,7 +12,9 @@
                 <a href="/recettes/{{ $recipe->url }}" class="has-text-grey-dark">{{ $recipe->title }}</a>
 
             </h2>
-            <p>par {{ $recipe->user->name }}</p> <br>
+            <p><strong>Créé(e) par </strong>{{ $recipe->user->name }}</p> <br>
+            <p><strong>Note moyenne :</strong> {{ $recipe->ratings()->avg('stars') ?? 'Pas encore noté' }}</p>
+            <p><strong>Prix : </strong>{{ $recipe->price }}</p> <br>
             <p><strong>Ingredients:</strong> {{ $recipe->ingredients }}</p>
             <p><strong>Content:</strong> {{ $recipe->content }}</p>
             {{-- <a href="{{ route('recettes.show', $recipe) }}">Read More</a> --}}

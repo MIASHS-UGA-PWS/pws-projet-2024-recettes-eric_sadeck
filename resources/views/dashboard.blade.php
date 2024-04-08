@@ -14,14 +14,18 @@
                     </div>
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <a href="{{ route('roles.index') }}" class="p-6 text-gray-900 block text-center">
-                        {{ __('Roles') }}
-                    </a>
+                    @if(auth()->user() && auth()->user()->hasRole('admin'))
+                        <a href="{{ route('roles.index') }}" class="p-6 text-gray-900 block text-center">
+                            {{ __('Roles') }}
+                        </a>
+                    @endif
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <a href="{{ route('user.index') }}" class="p-6 text-gray-900 block text-center">
-                        {{ __('Users') }}
-                    </a>
+                    @if(auth()->user() && auth()->user()->hasRole('admin'))
+                        <a href="{{ route('user.index') }}" class="p-6 text-gray-900 block text-center">
+                            {{ __('User') }}
+                        </a>
+                    @endif
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <a href="{{ route('recipes.index') }}" class="p-6 text-gray-900 block text-center">

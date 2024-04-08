@@ -21,10 +21,11 @@
                         @foreach($roles as $role)
                             <tr>
                                 <td>{{ $role->id }}</td>
-                                <td>{{ $role->name }}</td>
+                                {{-- <td>{{ $role->name }}</td> --}}
+                                <td><a href="/admin/roles/{{ $role->id }}">{{ $role->name }}</a></td>
                                 <td>
                                     <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-warning">Edit</a>
-                                    <a href="{{ route('roles.show', $role->id) }}" class="btn btn-info">View</a>
+                                    {{-- <a href="{{ route('roles.show', $role->id) }}" class="btn btn-info">View</a> --}}
                                     <form action="{{ route('roles.destroy', $role->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')

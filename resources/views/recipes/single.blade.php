@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="has-text-weight-bold">{{ $recipe->title }}</h1>
-    <p>par {{ $recipe->user->name }}</p> <br>
+    <p> Créé(e) par {{ $recipe->user->name }}</p> <br>
     <p><strong>Ingredients:</strong> {{ $recipe->ingredients }}</p>
     <p><strong>Content:</strong> {{ $recipe->content }}</p>
 
@@ -19,7 +19,7 @@
         <button type="submit">Noter</button>
         <p>Average rating: {{ $recipe->averageRating() }}</p>
     </form> -->
-    <h2>Commentaire</h2>       
+    <h2>Commentaire</h2>
         <!-- Formulaire de commentaires -->
         <form action="{{ route('comments.store', ['recipe' => $recipe->id]) }}" method="POST">
     @csrf

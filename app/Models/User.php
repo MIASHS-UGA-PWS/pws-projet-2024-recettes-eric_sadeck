@@ -5,10 +5,11 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Rating;
-use App\Models\User;
+
 
 class User extends Authenticatable
 {
@@ -64,7 +65,7 @@ public function getRoleNamesAttribute()
 {
     return $this->roles->pluck('name')->join(', ');
 }
-/*
+
 // Check if user has a role
 public function hasRole($roleName)
 {
@@ -74,8 +75,9 @@ public function hasRole($roleName)
 // Check if user is admin
 public function isAdmin()
 {
-    return $this->role == 'admin';
-} */
+    return $this->roles->contains('name', 'admin');
+}
+
 
 
 

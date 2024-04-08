@@ -61,14 +61,14 @@
 @endif
     <form action="{{ route('contact.store') }}" method="post">
         @csrf
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
+        <label for="name"><Strong>Name : </Strong></label> <br>
+        <input type="text" id="name" name="name"> <br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
+        <label for="email"><strong>Email : </strong></label> <br>
+        <input type="email" id="email" name="email"> <br>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message"></textarea>
+        <label for="message"><strong>Message : </strong></label><br>
+        <textarea id="message" name="message" style="width: 100%;" rows="10"></textarea> <br>
 
         <input type="submit" value="Submit">
     </form>

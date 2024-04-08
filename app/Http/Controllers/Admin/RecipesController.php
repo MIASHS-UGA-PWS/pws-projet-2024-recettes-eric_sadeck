@@ -29,13 +29,26 @@ class RecipesController extends Controller
          });
      }
 
+    // public function index()
+    // {
+    //     // $recipes = Recipe::all();
+    //     $recipes = \App\Models\Recipe::latest()->get(); // get all recipes in descending order
+    //     return view('admin.recipes.index', compact('recipes'));
+    // }
     public function index()
     {
-        // $recipes = Recipe::all();
-        $recipes = \App\Models\Recipe::latest()->get(); // get all recipes in descending order
+        //Debugging line
+        // dd(auth()->id(), \App\Models\Recipe::where('owner_id', auth()->id())->get()); // Debugging line
+
+        if ($this->user->isAdmin()) {
+            $recipes = \App\Models\Recipe::latest()->get(); // get all recipes in descending order
+        } else {
+            $recipes = \App\Models\Recipe::where('owner_id', $this->userId)->latest()->get(); // get only the recipes created by the authenticated user
+            // $recipes = \App\Models\Recipe::where('owner_id', auth()->id())->latest()->get(); // get only the recipes created by the authenticated user
+        }
+
         return view('admin.recipes.index', compact('recipes'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
